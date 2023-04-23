@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mt.reginmen.dao.RegisterMapper">
+
+    <insert id="register">
+        insert into user(id, password, sex, age, phone)
+        values (#{id}, #{password}, #{sex}, #{age}, #{phone})
+    </insert>
+    <select id="showAllLabels" resultType="com.mt.reginmen.domain.Label">
+        select *
+        from label
+    </select>
+    <update id="getSelectLabel">
+        update user
+        set labels_ids=#{labels_ids}
+        where id = #{id}
+    </update>
+
+
+</mapper>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mt.reginmen.dao.DataMapper">
+    <update id="click">
+        update data
+        set count=count + 1
+        where id = #{id}
+    </update>
+
+
+    <select id="findDataByLabel" resultType="com.mt.reginmen.domain.Data">
+        select *
+        from data
+        where labels_ids = #{labels_ids}
+    </select>
+    <select id="getUserLabel" resultType="java.lang.String">
+        select labels_ids
+        from user
+        where id = #{id}
+    </select>
+    <select id="findAllData" resultType="com.mt.reginmen.domain.Data">
+        select *
+        from data
+    </select>
+
+    <select id="findReviewsById" resultType="com.mt.reginmen.domain.Reviews_data">
+        select *
+        from reviews_data
+        where id = #{id}
+    </select>
+    <select id="findDataByCount" resultType="com.mt.reginmen.domain.Data">
+        select *
+        from data
+        order by count desc
+    </select>
+    <select id="findAllMechanism" resultType="com.mt.reginmen.domain.Data">
+        select *
+        from mechanism
+    </select>
+
+
+</mapper>
