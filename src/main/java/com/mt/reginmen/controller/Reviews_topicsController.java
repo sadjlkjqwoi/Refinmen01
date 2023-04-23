@@ -5,6 +5,7 @@ import com.mt.reginmen.service.Impl.Reviews_topicsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(origins = "http://localhost:8080")
 @RestController
 @RequestMapping("/Reviews_topics")
 public class Reviews_topicsController {

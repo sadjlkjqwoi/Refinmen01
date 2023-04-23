@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+//跨域访问
+@CrossOrigin(origins = "http://localhost:8080")
 @RestController
 @RequestMapping
 public class RegisterController {
@@ -20,6 +22,7 @@ public class RegisterController {
      * @param user
      * @return
      */
+
     @PostMapping("/register")
     public String register(@RequestBody User user) {
         return registerService.register(user);
@@ -30,6 +33,7 @@ public class RegisterController {
      *
      * @return
      */
+    @CrossOrigin(origins = "http://localhost:8080")
     @GetMapping("/showAllLabels")
     List<Label> showAllLabels() {
         return registerService.showAllLabels();
