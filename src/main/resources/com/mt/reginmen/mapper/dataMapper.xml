@@ -20,9 +20,9 @@
         from user
         where id = #{id}
     </select>
+
     <select id="findAllData" resultType="com.mt.reginmen.domain.Data">
-        select *
-        from data
+        SELECT * FROM data ORDER BY RAND()
     </select>
 
     <select id="findReviewsById" resultType="com.mt.reginmen.domain.Reviews_data">
@@ -33,12 +33,9 @@
     <select id="findDataByCount" resultType="com.mt.reginmen.domain.Data">
         select *
         from data
-        order by count desc
+        order by count desc limit 8
     </select>
-    <select id="findAllMechanism" resultType="com.mt.reginmen.domain.Data">
-        select *
-        from mechanism
-    </select>
+
 
 
 </mapper>
