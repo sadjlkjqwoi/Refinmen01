@@ -11,7 +11,7 @@
     <select id="selectFoodByName" parameterType="String" resultType="com.mt.reginmen.domain.Food">
         select *
         from food
-        where name = #{name};
+        where name like CONCAT('%',#{blockPushLog.blockName},'%');
     </select>
 
     <select id="selectFoodById" parameterType="int" resultType="com.mt.reginmen.domain.Food">
@@ -24,6 +24,9 @@
         select *
         from food
         where label like #{label};
+    </select>
+    <select id="selectFoodLabel" resultType="com.mt.reginmen.domain.Food">
+        select * from food;
     </select>
 
 

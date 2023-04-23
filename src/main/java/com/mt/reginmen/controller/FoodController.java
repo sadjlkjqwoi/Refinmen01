@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 import java.util.HashSet;
+import java.util.List;
 
 @RestController
 @RequestMapping("/food")
@@ -19,22 +20,24 @@ public class FoodController {
 
 
     @GetMapping("/getFoodByName")
-    public Food selectFoodByName(String name) {
-        Food food = foodService.selectFoodByName(name);
-        return food;
+    public List<Food> selectFoodByName(String name) {
+        return foodService.selectFoodByName(name);
     }
 
     @GetMapping("/getFoodById")
     public Food selectFoodById(int id) {
-        Food food = foodService.selectFoodById(id);
-        return food;
+        return foodService.selectFoodById(id);
+    }
+
+    @GetMapping("/selectFoodLabel")
+    public List<Food> selectFoodLabel(){
+        return foodService.selectFoodLabel();
     }
 
     //这个方法需要改
     @GetMapping("/RecommendedFood")
     public HashSet<Food> RecommendedFood(String id) {
-        HashSet<Food> foods = foodService.RecommendedFood(id);
-        return foods;
+        return foodService.RecommendedFood(id);
     }
 
 }

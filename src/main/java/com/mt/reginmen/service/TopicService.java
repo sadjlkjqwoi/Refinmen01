@@ -3,6 +3,7 @@ package com.mt.reginmen.service;
 import com.mt.reginmen.domain.Topics;
 
 import java.util.HashSet;
+import java.util.List;
 
 public interface TopicService {
     public int addTopic(Topics topic);
@@ -13,7 +14,7 @@ public interface TopicService {
 
 //    public int selectTopic(String t_name);
 
-    public HashSet<Topics> TopicSort();
+    public List<Topics> TopicSort();
 
     int addUser_idToTopic(int topic_id, String user_id);
 

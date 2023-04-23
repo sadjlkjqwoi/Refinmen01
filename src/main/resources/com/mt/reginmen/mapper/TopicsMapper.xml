@@ -10,8 +10,8 @@
 <mapper namespace="com.mt.reginmen.dao.TopicsMapper">
 
     <insert id="addTopic">
-        insert into topics(t_name, count, t_content, t_lable, t_clicks)
-        values (#{t_name}, 0, #{t_content}, #{t_label}, #{t_click})
+        insert into topics(id,name, count, user_id, content, reviews_ids)
+        values (#{id},#{name}, 0,#{user_id}, #{content}, #{reviews_ids})
     </insert>
 
     <update id="IncreaseHot">
@@ -30,10 +30,10 @@
         FROM topics
         order by count desc
     </select>
-    <!--sql语句有问题-->
+
     <update id="addUser_idToTopic">
         update topics
-        set reviews_ids = CONCAT(reviews_ids, ",", #{user_id})
+        set reviews_ids = if(reviews_ids=null,#{user_id},CONCAT(reviews_ids, ",", #{user_id}))
         where id = #{topic_id}
     </update>
 

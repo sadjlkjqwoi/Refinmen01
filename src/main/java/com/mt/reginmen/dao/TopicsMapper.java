@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashSet;
+import java.util.List;
 
 @Mapper
 public interface TopicsMapper {
@@ -14,9 +15,7 @@ public interface TopicsMapper {
 
     int deleteTopic(int id);
 
-//    Topics selectTopic(String t_name);
-
-    HashSet<Topics> TopicSort();
+    List<Topics> TopicSort();
 
     int IncreaseHot(int id);
 

@@ -3,15 +3,15 @@ package com.mt.reginmen.controller;
 import com.mt.reginmen.domain.Reviews_topics;
 import com.mt.reginmen.service.Impl.Reviews_topicsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/Reviews_topics")
-public class Reviews_topicsServiceController {
+public class Reviews_topicsController {
 
     @Autowired
     Reviews_topicsServiceImpl reviews_topicsService;
+
 
     @GetMapping("/addReviews_topics")
     public int addReviews_topics(@RequestBody Reviews_topics reviews_topics) {

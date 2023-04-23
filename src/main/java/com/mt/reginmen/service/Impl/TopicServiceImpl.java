@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.List;
 
 @Service
 public class TopicServiceImpl implements TopicService {
@@ -30,7 +31,7 @@ public class TopicServiceImpl implements TopicService {
     }
 
     @Override
-    public HashSet<Topics> TopicSort() {
+    public List<Topics> TopicSort() {
         return topicsDao.TopicSort();
 
     }
