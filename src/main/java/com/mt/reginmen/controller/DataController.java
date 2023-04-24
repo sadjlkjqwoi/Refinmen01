@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Map;
 
 @RequestMapping
 @RestController
@@ -151,4 +152,10 @@ public class DataController {
     public void click(int id) {
         dataService.click(id);
     }
+
+    @GetMapping("/getLabelHot")
+    public Map<Integer,Double> getLabelHot(int min, int max){
+        return dataService.getLabelHot(min, max);
+    }
+
 }

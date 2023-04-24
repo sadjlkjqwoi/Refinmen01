@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("label")
+@RequestMapping()
 public class LabelController {
 
     @Autowired
@@ -27,6 +29,11 @@ public class LabelController {
     @GetMapping("/selectLabel")
     public Label selectLabel(String name) {
         return labelService.selectLabel(name);
+    }
+
+    @GetMapping("/getHotLabelName")
+    public List<String> getLabelName(int min, int max){
+        return labelService.getLabelName(min, max);
     }
 
 }

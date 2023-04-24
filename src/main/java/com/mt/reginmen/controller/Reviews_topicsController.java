@@ -5,6 +5,7 @@ import com.mt.reginmen.service.Impl.Reviews_topicsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+
 @RestController
 @RequestMapping("/Reviews_topics")
 public class Reviews_topicsController {
@@ -13,10 +14,12 @@ public class Reviews_topicsController {
     Reviews_topicsServiceImpl reviews_topicsService;
 
 
+
     @GetMapping("/addReviews_topics")
     public int addReviews_topics(@RequestBody Reviews_topics reviews_topics) {
         return reviews_topicsService.addReviews_topics(reviews_topics);
     }
+
 
     @DeleteMapping("/deleteReviews_topics")
     public int deleteReviews_topics(int id) {

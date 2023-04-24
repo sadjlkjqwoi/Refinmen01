@@ -32,6 +32,9 @@
         from label
         where name like #{name}
     </select>
+    <select id="getLabelName" resultType="java.lang.String">
+        select name from label where id = #{id}
+    </select>
 
 
 </mapper>

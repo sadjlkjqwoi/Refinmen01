@@ -7,8 +7,7 @@ import com.mt.reginmen.service.DataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class DataServiceImpl implements DataService {
@@ -47,5 +46,41 @@ public class DataServiceImpl implements DataService {
 
     public void click(int id) {
         dataMapper.click(id);
+    }
+
+    @Override
+    public Map<Integer,Double> getLabelHot(int min,int max) {
+        List<String> labels = dataMapper.getLabelHot(min, max);
+        ArrayList<String> label = new ArrayList<>();
+        Map<String, Integer> map = new HashMap<>();
+        for (String l:labels){
+            String[] a = l.split(",");
+            label.addAll(Arrays.asList(a));
+        }
+        System.out.println(label.size());
+        int count = 0;
+        for (String obj : label){
+            if (map.containsKey(obj)){
+                count++;
+                map.put(obj,map.get(obj)+1);
+            }else {
+                map.put(obj,1);
+            }
+        }
+        List<Integer> hotLabels = new ArrayList<>();
+        List<Map.Entry<String,Integer>> list = new ArrayList<>(map.entrySet());
+        Collections.sort(list,(o1, o2) -> (o2.getValue() - o1.getValue()));
+        for (int i=0;i<5;i++){
+            hotLabels.add(Integer.valueOf(list.get(i).getKey()));
+            System.out.println((double)Integer.valueOf(list.get(i).getValue())/ label.size());
+        }
+
+        Map<Integer,Double> map1 = new HashMap<>();
+
+        for (int i=0;i< hotLabels.size();i++){
+            map1.put(Integer.valueOf(list.get(i).getKey()),(double)Integer.valueOf(list.get(i).getValue())/ label.size());
+        }
+
+        return map1;
     }
 }
