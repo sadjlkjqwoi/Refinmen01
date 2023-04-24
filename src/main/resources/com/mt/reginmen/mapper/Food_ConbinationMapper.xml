@@ -26,9 +26,12 @@
         select * from food_conbination where name like CONCAT('%',#{name},'%');
 
     </select>
-
-
     <select id="selectFoodLabel" resultType="com.mt.reginmen.domain.Food_Conbination">
         select * from food_conbination;
     </select>
+    <select id="getInformation" resultType="java.lang.String">
+        select acticle from food_conbination;
+    </select>
+
+
 </mapper>

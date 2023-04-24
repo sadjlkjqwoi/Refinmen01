@@ -10,10 +10,7 @@ import com.mt.reginmen.service.FoodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Service
 public class FoodServiceImpl implements FoodService {
@@ -36,6 +33,17 @@ public class FoodServiceImpl implements FoodService {
     @Override
     public List<Food> selectFoodLabel() {
         return foodDao.selectFoodLabel();
+    }
+
+    @Override
+    public List<String[]> getFoodInformation() {
+        List<String> AllFoodInformation = foodDao.getFoodInformation();
+        List<String[]> list = new ArrayList<>();
+        for (String s : AllFoodInformation){
+            String[] information = s.split("#");
+            list.add(information);
+        }
+        return list;
     }
 
     @Override

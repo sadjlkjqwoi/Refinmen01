@@ -14,5 +14,17 @@ public interface LabelService {
     Label selectLabel(String name);
 
     List<String> getLabelName(int min,int max);
+    /**
+     * 大数据分析
+     * 查找点击最多的前十标签
+     * @return
+     */
+    List<Label> findTop10();
+
+    /**
+     * 计算总的次数
+     * @return
+     */
+    double Sum();
 
 }

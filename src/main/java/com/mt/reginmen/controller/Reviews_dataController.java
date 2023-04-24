@@ -1,11 +1,9 @@
 package com.mt.reginmen.controller;
 
+import com.mt.reginmen.domain.Reviews_data;
 import com.mt.reginmen.service.Reviews_dataService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = "http://localhost:8080")
 @RestController
@@ -14,7 +12,11 @@ public class Reviews_dataController {
     @Autowired
     private Reviews_dataService reviews_dataService;
     @GetMapping("/addReviews")
-    void addReviews(String user_id,int data_id,String content){
-        reviews_dataService.addReviews(user_id, data_id, content);
+    void addReviews(@RequestBody Reviews_data reviews_data){
+        reviews_dataService.addReviews(reviews_data);
+    }
+    @DeleteMapping("/deleteReviews")
+    void deleteReviews(int id){
+        reviews_dataService.deleteReviews(id);
     }
 }

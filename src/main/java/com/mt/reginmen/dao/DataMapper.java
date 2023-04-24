@@ -48,4 +48,6 @@ public interface DataMapper {
 
     List<String> getLabelHot(int min,int max);
 
+
+
 }

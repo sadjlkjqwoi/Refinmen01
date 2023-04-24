@@ -16,4 +16,6 @@ public interface FoodMapper {
 
     List<Food> selectFoodLabel();
 
+    List<String> getFoodInformation();
+
 }

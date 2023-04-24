@@ -2,10 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.mt.reginmen.dao.Reviews_data">
+<mapper namespace="com.mt.reginmen.dao.Reviews_dataMapper">
 
 
     <insert id="addReviews">
-        insert into reviews_data(user_id,data_id,content) values (#{user_id},#{data_id},#{content})
+        insert into reviews_data values (null,#{user_id},#{data_id},#{content})
     </insert>
+    <update id="addReview_idToData">
+        update data set reviews_ids=if(reviews_ids=null,#{id},CONCAT(reviews_ids,",",#{id})) where id=#{data_id}
+    </update>
+    <delete id="deleteReviews">
+        delete from reviews_data where id=#{id}
+    </delete>
 </mapper>

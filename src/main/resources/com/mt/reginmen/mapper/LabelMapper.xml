@@ -35,6 +35,12 @@
     <select id="getLabelName" resultType="java.lang.String">
         select name from label where id = #{id}
     </select>
+    <select id="findTop10" resultType="com.mt.reginmen.domain.Label">
+        select * from label order by count desc limit 10
+    </select>
+    <select id="Sum" resultType="java.lang.Double">
+        SELECT SUM(DISTINCT count) FROM label;
+    </select>
 
 
 </mapper>

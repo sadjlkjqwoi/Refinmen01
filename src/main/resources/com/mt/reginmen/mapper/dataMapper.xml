@@ -3,6 +3,8 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.mt.reginmen.dao.DataMapper">
+
+
     <update id="click">
         update data
         set count=count + 1

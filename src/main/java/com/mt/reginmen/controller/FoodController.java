@@ -13,7 +13,7 @@ import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:8080")
 @RestController
-@RequestMapping("/food")
+@RequestMapping
 public class FoodController {
 
     @Autowired
@@ -38,6 +38,11 @@ public class FoodController {
     @GetMapping("/RecommendedFood")
     public HashSet<Food> RecommendedFood(String id) {
         return foodService.RecommendedFood(id);
+    }
+
+    @GetMapping("/getFoodInformation")
+    public List<String[]> getFoodInformation(){
+        return foodService.getFoodInformation();
     }
 
 }

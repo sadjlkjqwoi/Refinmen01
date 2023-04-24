@@ -10,7 +10,7 @@ import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:8080")
 @RestController
-@RequestMapping("/FoodConbination")
+@RequestMapping
 public class Food_ConbinationController {
 
     @Autowired
@@ -36,5 +36,11 @@ public class Food_ConbinationController {
     public HashSet<Food_Conbination> RecommendedFood_Conbination(String id){
         return food_conbinationService.RecommendedFood_Conbination(id);
     }
+
+    @GetMapping("/getInformation")
+    public List<String[]> getInformation(){
+        return food_conbinationService.getInformation();
+    }
+
 
 }

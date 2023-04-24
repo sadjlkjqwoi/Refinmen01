@@ -15,4 +15,6 @@ public interface Food_ConbinationService {
 
     public List<Food_Conbination> selectFoodLabel();
 
+    public List<String[]> getInformation();
+
 }

@@ -28,6 +28,9 @@
     <select id="selectFoodLabel" resultType="com.mt.reginmen.domain.Food">
         select * from food;
     </select>
+    <select id="getFoodInformation" resultType="java.lang.String">
+        select acticle from food;
+    </select>
 
 
 </mapper>

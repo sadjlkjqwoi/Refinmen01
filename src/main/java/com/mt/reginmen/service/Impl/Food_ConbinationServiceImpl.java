@@ -8,6 +8,7 @@ import com.mt.reginmen.service.Food_ConbinationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
@@ -32,6 +33,17 @@ public class Food_ConbinationServiceImpl implements Food_ConbinationService {
     @Override
     public List<Food_Conbination> selectFoodLabel() {
         return food_conbinationDao.selectFoodLabel();
+    }
+
+    @Override
+    public List<String[]> getInformation() {
+        List<String> AllFoodInformation = food_conbinationDao.getInformation();
+        List<String[]> list = new ArrayList<>();
+        for (String s : AllFoodInformation){
+            String[] information = s.split("#");
+            list.add(information);
+        }
+        return list;
     }
 
     @Override

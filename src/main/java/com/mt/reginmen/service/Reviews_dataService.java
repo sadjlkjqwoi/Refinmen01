@@ -1,7 +1,8 @@
 package com.mt.reginmen.service;
 
-import com.mt.reginmen.dao.Reviews_data;
+import com.mt.reginmen.domain.Reviews_data;
 
 public interface Reviews_dataService {
-    void addReviews(String user_id,int data_id,String content);
+    public void addReviews(Reviews_data reviews_data);
+    void deleteReviews(int id);
 }

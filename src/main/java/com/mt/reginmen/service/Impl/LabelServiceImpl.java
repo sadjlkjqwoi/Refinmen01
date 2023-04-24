@@ -47,5 +47,16 @@ public class LabelServiceImpl implements LabelService {
         return names;
     }
 
+    @Override
+    public List<Label> findTop10() {
+
+        return labelMapper.findTop10();
+    }
+
+    @Override
+    public double Sum() {
+        return labelMapper.Sum();
+    }
+
 
 }
