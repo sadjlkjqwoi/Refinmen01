@@ -37,13 +37,10 @@ public class TopicServiceImpl implements TopicService {
     }
 
     @Override
-    public int addUser_idToTopic(int topic_id, String user_id) {
-        return topicsDao.addUser_idToTopic(topic_id, user_id);
+    public int addReviewToTopic(int topic_id, int Review_id) {
+        return topicsDao.addReviewToTopic(topic_id, Review_id);
     }
-//    @Override
-//    public Topics selectTopic(String t_name){
-//        return topicsDao.selectTopic(t_name);
-//    }
+
 
 
 }

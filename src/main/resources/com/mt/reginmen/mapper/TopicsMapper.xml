@@ -31,9 +31,9 @@
         order by count desc
     </select>
 
-    <update id="addUser_idToTopic">
+    <update id="addReviewToTopic">
         update topics
-        set reviews_ids = if(reviews_ids=null,#{user_id},CONCAT(reviews_ids, ",", #{user_id}))
+        set reviews_ids = if(reviews_ids=null,#{Review_id},CONCAT(reviews_ids, ",", #{Review_id}))
         where id = #{topic_id}
     </update>
 

@@ -19,6 +19,6 @@ public interface TopicsMapper {
 
     int IncreaseHot(int id);
 
-    int addUser_idToTopic(int topic_id, String user_id);
+    int addReviewToTopic(int topic_id, int Review_id);
 
 }

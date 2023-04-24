@@ -1,5 +1,6 @@
 package com.mt.reginmen.controller;
 
+import com.baomidou.mybatisplus.extension.api.R;
 import com.mt.reginmen.domain.Topics;
 
 import com.mt.reginmen.service.Impl.TopicServiceImpl;
@@ -39,9 +40,9 @@ public class TopicController {
         return topicService.TopicSort();
     }
 
-    @RequestMapping("/addUser_idToTopic")
-    public int addUser_idToTopic(int topic_id,String user_id) {
-        return topicService.addUser_idToTopic(topic_id, user_id);
+    @RequestMapping("/addReviewToTopic")
+    public int addReviewToTopic(int topic_id, int Review_id) {
+        return topicService.addReviewToTopic(topic_id, Review_id);
     }
 
 
