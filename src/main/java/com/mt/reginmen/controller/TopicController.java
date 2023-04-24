@@ -12,7 +12,7 @@ import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:8080")
 @RestController
-@RequestMapping("/topic")
+@RequestMapping
 public class TopicController {
 
     @Autowired
@@ -33,6 +33,7 @@ public class TopicController {
         return topicService.IncreaseHot(id);
     }
 
+    @CrossOrigin(origins = "http://localhost:8080")
     @GetMapping("/TopicSort")
     public List<Topics> TopicSort() {
         return topicService.TopicSort();

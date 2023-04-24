@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 //跨域访问
 @CrossOrigin(origins = "http://localhost:8080")
@@ -22,7 +23,6 @@ public class RegisterController {
      * @param user
      * @return
      */
-
     @PostMapping("/register")
     public String register(@RequestBody User user) {
         return registerService.register(user);
@@ -33,7 +33,6 @@ public class RegisterController {
      *
      * @return
      */
-    @CrossOrigin(origins = "http://localhost:8080")
     @GetMapping("/showAllLabels")
     List<Label> showAllLabels() {
         return registerService.showAllLabels();
@@ -46,10 +45,23 @@ public class RegisterController {
      * @param labels_ids
      * @return
      */
+
+//    @RequestMapping("/getSelectLabel")
+//    public boolean getSelectLabel(String id,String labels_ids) {
+//        System.out.println(id);
+//        System.out.println(labels_ids);
+//        registerService.getSelectLabel(id, labels_ids);
+//        return true;
+//    }
     @RequestMapping("/getSelectLabel")
-    public boolean getSelectLabel(String id, String labels_ids) {
-        registerService.getSelectLabel(id, labels_ids);
+    public boolean getSelectLabel(@RequestBody Map<String, String> requestBody) {
+        String id = requestBody.get("id");
+        String labelsIds = requestBody.get("labels_ids");
+        System.out.println(id);
+        System.out.println(labelsIds);
+        registerService.getSelectLabel(id, labelsIds);
         return true;
     }
+
 
 }
