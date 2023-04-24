@@ -10,4 +10,5 @@ import lombok.NoArgsConstructor;
 public class Label {
     private int id;
     private String name;
+    private int count;
 }

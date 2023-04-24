@@ -12,4 +12,6 @@ public interface LabelMapper {
 
     Label selectLabel(String name);
 
+    String getLabelName(int id);
+
 }

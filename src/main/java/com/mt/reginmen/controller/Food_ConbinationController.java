@@ -1,10 +1,8 @@
 package com.mt.reginmen.controller;
 
 import com.mt.reginmen.domain.Food_Conbination;
-import com.mt.reginmen.domain.User;
 import com.mt.reginmen.service.Impl.Food_ConbinationServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashSet;

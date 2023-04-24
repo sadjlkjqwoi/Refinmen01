@@ -45,4 +45,7 @@ public interface DataMapper {
     List<Data> findDataByCount();
 
     void click(int id);
+
+    List<String> getLabelHot(int min,int max);
+
 }

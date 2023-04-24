@@ -35,7 +35,6 @@ public class FoodController {
         return foodService.selectFoodLabel();
     }
 
-    //这个方法需要改
     @GetMapping("/RecommendedFood")
     public HashSet<Food> RecommendedFood(String id) {
         return foodService.RecommendedFood(id);
