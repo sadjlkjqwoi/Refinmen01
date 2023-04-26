@@ -16,5 +16,8 @@ public interface FoodService {
     public HashSet<Food> RecommendedFood(String id);
     List<Food> selectFoodLabel();
 
-    List<String[]> getFoodInformation();
+    String[] getFoodInformation(int id);
+
+    List<Food> getFoodByLabel(String[] selectLabels);
+
 }

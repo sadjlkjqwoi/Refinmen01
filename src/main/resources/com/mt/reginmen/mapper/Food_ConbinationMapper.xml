@@ -30,7 +30,7 @@
         select * from food_conbination;
     </select>
     <select id="getInformation" resultType="java.lang.String">
-        select acticle from food_conbination;
+        select acticle from food_conbination where id = #{id};
     </select>
 
 

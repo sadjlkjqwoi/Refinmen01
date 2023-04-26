@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class Food_ConbinationServiceImpl implements Food_ConbinationService {
@@ -36,12 +37,40 @@ public class Food_ConbinationServiceImpl implements Food_ConbinationService {
     }
 
     @Override
-    public List<String[]> getInformation() {
-        List<String> AllFoodInformation = food_conbinationDao.getInformation();
-        List<String[]> list = new ArrayList<>();
-        for (String s : AllFoodInformation){
-            String[] information = s.split("#");
-            list.add(information);
+    public String[] getInformation(int id) {
+        String Information = food_conbinationDao.getInformation(id);
+
+        String[] information = Information.split("#");
+
+        return information;
+    }
+
+    public boolean function(String[] arr1,String[] arr2){
+        for (String item : arr2) {
+            boolean containsItem = false;
+            for (String element : arr1) {
+                if (Objects.equals(element, item)) {
+                    containsItem = true;
+                    break;
+                }
+            }
+            if (!containsItem) {
+                return false;
+            }
+        }
+        return true;
+
+    }
+
+    @Override
+    public List<Food_Conbination> getFcByLabel(String[] selectLabels) {
+        List<Food_Conbination> fcs = food_conbinationDao.selectFoodLabel();
+        List<Food_Conbination> list = new ArrayList<>();
+        for (Food_Conbination food_conbination : fcs){
+            String[] labels = food_conbination.getLabels_ids().split(",");
+            if (function(labels,selectLabels)){
+                list.add(food_conbination);
+            }
         }
         return list;
     }

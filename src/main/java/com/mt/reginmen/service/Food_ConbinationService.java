@@ -1,5 +1,6 @@
 package com.mt.reginmen.service;
 
+import com.mt.reginmen.domain.Food;
 import com.mt.reginmen.domain.Food_Conbination;
 import com.mt.reginmen.domain.User;
 
@@ -15,6 +16,8 @@ public interface Food_ConbinationService {
 
     public List<Food_Conbination> selectFoodLabel();
 
-    public List<String[]> getInformation();
+    public String[] getInformation(int id);
+
+    public List<Food_Conbination> getFcByLabel(String[] selectLabels);
 
 }

@@ -18,6 +18,6 @@ public interface Food_ConbinationMapper {
 
     List<Food_Conbination> selectFoodLabel();
 
-    List<String> getInformation();
+    String getInformation(int id);
 
 }

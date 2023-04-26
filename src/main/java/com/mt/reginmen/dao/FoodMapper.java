@@ -12,10 +12,8 @@ public interface FoodMapper {
 
     Food selectFoodById(int id);
 
-    Food selectFoodByLabel(String label);
-
     List<Food> selectFoodLabel();
 
-    List<String> getFoodInformation();
+    String  getFoodInformation(int id);
 
 }

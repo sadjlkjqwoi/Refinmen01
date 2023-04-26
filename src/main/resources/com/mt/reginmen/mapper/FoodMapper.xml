@@ -20,16 +20,12 @@
         where id = #{id};
     </select>
 
-    <select id="selectFoodByLabel" parameterType="String" resultType="com.mt.reginmen.domain.Food">
-        select *
-        from food
-        where label like #{label};
-    </select>
+
     <select id="selectFoodLabel" resultType="com.mt.reginmen.domain.Food">
         select * from food;
     </select>
     <select id="getFoodInformation" resultType="java.lang.String">
-        select acticle from food;
+        select acticle from food where id = #{id};
     </select>
 
 

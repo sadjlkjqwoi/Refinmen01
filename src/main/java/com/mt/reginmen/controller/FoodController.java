@@ -30,19 +30,29 @@ public class FoodController {
         return foodService.selectFoodById(id);
     }
 
+    //输出所有食物
     @GetMapping("/selectFoodLabel")
     public List<Food> selectFoodLabel(){
         return foodService.selectFoodLabel();
     }
 
+    //给用户推荐Label相同的食物
     @GetMapping("/RecommendedFood")
     public HashSet<Food> RecommendedFood(String id) {
         return foodService.RecommendedFood(id);
     }
 
+
+    //获得食物详细信息
     @GetMapping("/getFoodInformation")
-    public List<String[]> getFoodInformation(){
-        return foodService.getFoodInformation();
+    public String[] getFoodInformation(int id){
+        return foodService.getFoodInformation(id);
+    }
+
+    //用户选择标签筛选食物
+    @GetMapping("/getFoodByLabel")
+    public List<Food> getFoodByLabel(String[] selectLabels){
+        return foodService.getFoodByLabel(selectLabels);
     }
 
 }
