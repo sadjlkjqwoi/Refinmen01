@@ -24,8 +24,18 @@ public class DataController {
 
 
     /**
+     * 游客身份
+     * 查询所有的数据
+     * @return
+     */
+    @GetMapping("/findAllData")
+    public List<Data> findAllData(){
+        return dataService.findAllData();
+    }
+
+    /**
      * 资源上传
-     *
+     *根据用户的id来查询所有数据
      * @param id
      * @return
      */
@@ -155,5 +165,8 @@ public class DataController {
     public Map<Integer,Double> getLabelHot(int min, int max){
         return dataService.getLabelHot(min, max);
     }
+
+
+
 
 }

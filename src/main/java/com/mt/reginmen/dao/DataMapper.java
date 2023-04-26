@@ -39,15 +39,20 @@ public interface DataMapper {
 
     /**
      * 根据热度查询
-     *
      * @return
      */
     List<Data> findDataByCount();
+
+    /**
+     * 点击量增加
+     * @param id
+     */
 
     void click(int id);
 
     List<String> getLabelHot(int min,int max);
 
+    List<Data> findAllDatas();
 
 
 }

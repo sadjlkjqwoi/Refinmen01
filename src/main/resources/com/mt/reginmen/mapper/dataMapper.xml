@@ -40,8 +40,9 @@
     <select id="getLabelHot" resultType="java.lang.String">
         select labels_ids from user where age between #{min} and #{max};
     </select>
-
-
+    <select id="findAllDatas" resultType="com.mt.reginmen.domain.Data">
+        select * from data ;
+    </select>
 
 
 </mapper>

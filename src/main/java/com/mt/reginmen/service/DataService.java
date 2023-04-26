@@ -22,4 +22,6 @@ public interface DataService {
     void click(int id);
 
     Map<Integer,Double> getLabelHot(int min, int max);
+
+    List<Data> findAllData();
 }

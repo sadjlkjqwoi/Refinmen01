@@ -83,4 +83,9 @@ public class DataServiceImpl implements DataService {
 
         return map1;
     }
+
+    @Override
+    public List<Data> findAllData() {
+        return dataMapper.findAllDatas();
+    }
 }
