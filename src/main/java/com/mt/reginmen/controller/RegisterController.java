@@ -57,8 +57,6 @@ public class RegisterController {
     public boolean getSelectLabel(@RequestBody Map<String, String> requestBody) {
         String id = requestBody.get("id");
         String labelsIds = requestBody.get("labels_ids");
-        System.out.println(id);
-        System.out.println(labelsIds);
         registerService.getSelectLabel(id, labelsIds);
         return true;
     }

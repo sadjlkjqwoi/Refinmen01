@@ -30,11 +30,12 @@ public class DataController {
      * @return
      */
     @GetMapping("/findAllDatas")
-    public List<Data> findAllDatas(String id) {
+    public List<Data> findAllDatas(@RequestParam String id) {
         //用户个性化标签
         String labels = dataService.getUserLabel(id);
         String[] labels_ids = labels.split(",");
         List<Data> datas = new ArrayList<>();
+        System.out.println(datas);
         //获取所有数据
         List<Data> allData = dataService.findAllDatas();
         Boolean[] results = new Boolean[allData.size()];
@@ -139,7 +140,6 @@ public class DataController {
     @GetMapping("/findDataByCount")
     List<Data> findDataByCount() {
         List<Data> datas = dataService.findDataByCount();
-
         return datas;
     }
 

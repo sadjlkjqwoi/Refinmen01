@@ -33,7 +33,7 @@
     <select id="findDataByCount" resultType="com.mt.reginmen.domain.Data">
         select *
         from data
-        order by count desc limit 8
+        order by count desc limit 10
     </select>
     <select id="getLabelHot" resultType="java.lang.String">
         select labels_ids from user where age between #{min} and #{max};
