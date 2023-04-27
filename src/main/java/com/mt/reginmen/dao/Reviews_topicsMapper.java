@@ -13,7 +13,7 @@ public interface Reviews_topicsMapper {
 
     int deleteReviews_topics(int id);
 
-    List<Reviews_topics> AllReviews_topics();
+    List<Reviews_topics> AllReviews_topics(int id);
 
 
 }

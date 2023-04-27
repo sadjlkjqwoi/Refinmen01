@@ -28,7 +28,7 @@
         where id = #{id}
     </delete>
     <select id="AllReviews_topics" resultType="com.mt.reginmen.domain.Reviews_topics">
-        select * from Reviews_topics;
+        select * from Reviews_topics where topics_id = #{id} ;
     </select>
 
 </mapper>
