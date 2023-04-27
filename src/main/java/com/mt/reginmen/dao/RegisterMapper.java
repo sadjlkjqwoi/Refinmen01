@@ -39,4 +39,8 @@ public interface RegisterMapper {
 
     boolean getSelectLabel(String id, String labels_ids);
 
+
+    int AgeCount(int min,int max);
+
+
 }

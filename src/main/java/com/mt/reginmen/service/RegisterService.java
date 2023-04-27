@@ -11,4 +11,7 @@ public interface RegisterService {
     List<Label> showAllLabels();
 
     boolean getSelectLabel(String id, String labels_ids);
+
+    List<Integer> AgeCount();
+
 }

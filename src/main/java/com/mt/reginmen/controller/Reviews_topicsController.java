@@ -5,6 +5,8 @@ import com.mt.reginmen.service.Impl.Reviews_topicsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @CrossOrigin(origins = "http://localhost:8080")
 @RestController
 @RequestMapping
@@ -24,5 +26,10 @@ public class Reviews_topicsController {
         return reviews_topicsService.deleteReviews_topics(id);
     }
 
+    //获得所有人发表的评论
+    @GetMapping("/AllReviews_topics")
+    public List<Reviews_topics> AllReviews_topics(){
+        return reviews_topicsService.AllReviews_topics();
+    }
 
 }

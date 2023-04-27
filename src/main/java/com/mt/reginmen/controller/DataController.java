@@ -162,8 +162,8 @@ public class DataController {
     }
 
     @GetMapping("/getLabelHot")
-    public Map<Integer,Double> getLabelHot(int min, int max){
-        return dataService.getLabelHot(min, max);
+    public List<List<Label>> getLabelHot(){
+        return dataService.getLabelTop3();
     }
 
 

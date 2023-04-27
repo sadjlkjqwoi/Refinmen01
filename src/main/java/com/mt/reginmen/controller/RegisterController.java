@@ -38,13 +38,13 @@ public class RegisterController {
         return registerService.showAllLabels();
     }
 
-    /**
-     * 获取用户选择的标签
-     *
-     * @param id
-     * @param labels_ids
-     * @return
-     */
+//    /**
+//     * 获取用户选择的标签
+//     *
+//     * @param id
+//     * @param labels_ids
+//     * @return
+//     */
 
 //    @RequestMapping("/getSelectLabel")
 //    public boolean getSelectLabel(String id,String labels_ids) {
@@ -61,6 +61,11 @@ public class RegisterController {
         System.out.println(labelsIds);
         registerService.getSelectLabel(id, labelsIds);
         return true;
+    }
+
+    @GetMapping("/AgeCount")
+    public List<Integer> AgeCount(){
+        return registerService.AgeCount();
     }
 
 

@@ -50,7 +50,7 @@ public interface DataMapper {
 
     void click(int id);
 
-    List<String> getLabelHot(int min,int max);
+    List<String> getLabelTop3(int min,int max);
 
     List<Data> findAllDatas();
 

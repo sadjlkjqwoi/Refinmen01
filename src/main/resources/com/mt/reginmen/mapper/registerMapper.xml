@@ -12,11 +12,17 @@
         select *
         from label
     </select>
+
     <update id="getSelectLabel">
         update user
         set labels_ids=#{labels_ids}
         where id = #{id}
     </update>
+
+    <select id="AgeCount" resultType="java.lang.Integer">
+        SELECT COUNT(age) FROM user WHERE age BETWEEN #{min} AND #{max};
+    </select>
+
 
 
 </mapper>

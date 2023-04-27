@@ -28,4 +28,6 @@ public interface LabelMapper {
      */
     double Sum();
 
+    Label getLabelById(int id);
+
 }

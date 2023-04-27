@@ -41,6 +41,9 @@
     <select id="Sum" resultType="java.lang.Double">
         SELECT SUM(DISTINCT count) FROM label;
     </select>
+    <select id="getLabelById" resultType="com.mt.reginmen.domain.Label">
+        select * from label where id = #{id}
+    </select>
 
 
 </mapper>

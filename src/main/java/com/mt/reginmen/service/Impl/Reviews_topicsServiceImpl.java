@@ -7,6 +7,8 @@ import com.mt.reginmen.service.Reviews_topicsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class Reviews_topicsServiceImpl implements Reviews_topicsService {
 
@@ -25,5 +27,10 @@ public class Reviews_topicsServiceImpl implements Reviews_topicsService {
     @Override
     public int deleteReviews_topics(int id) {
         return reviews_topicsMapper.deleteReviews_topics(id);
+    }
+
+    @Override
+    public List<Reviews_topics> AllReviews_topics() {
+        return reviews_topicsMapper.AllReviews_topics();
     }
 }

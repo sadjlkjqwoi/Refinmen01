@@ -37,7 +37,7 @@
         from data
         order by count desc limit 8
     </select>
-    <select id="getLabelHot" resultType="java.lang.String">
+    <select id="getLabelTop3" resultType="java.lang.String">
         select labels_ids from user where age between #{min} and #{max};
     </select>
     <select id="findAllDatas" resultType="com.mt.reginmen.domain.Data">

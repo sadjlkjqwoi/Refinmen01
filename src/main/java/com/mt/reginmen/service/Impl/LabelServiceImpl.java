@@ -35,17 +35,17 @@ public class LabelServiceImpl implements LabelService {
         return labelMapper.selectLabel(name);
     }
 
-    @Override
-    public List<String> getLabelName(int min,int max) {
-        List<String> names = new ArrayList<>();
-        Map<Integer,Double> map = dataService.getLabelHot(min, max);
-        List<Map.Entry<Integer,Double>> list = new ArrayList<>(map.entrySet());
-        for (int i=0;i<list.size();i++){
-            System.out.println(list.get(i).getKey());
-            names.add(labelMapper.getLabelName(list.get(i).getKey()));
-        }
-        return names;
-    }
+//    @Override
+//    public List<String> getLabelName(int min,int max) {
+//        List<String> names = new ArrayList<>();
+//        Map<Integer,Double> map = dataService.getLabelHot(min, max);
+//        List<Map.Entry<Integer,Double>> list = new ArrayList<>(map.entrySet());
+//        for (int i=0;i<list.size();i++){
+//            System.out.println(list.get(i).getKey());
+//            names.add(labelMapper.getLabelName(list.get(i).getKey()));
+//        }
+//        return names;
+//    }
 
     @Override
     public List<Label> findTop10() {
@@ -56,6 +56,11 @@ public class LabelServiceImpl implements LabelService {
     @Override
     public double Sum() {
         return labelMapper.Sum();
+    }
+
+    @Override
+    public String getLabelName(int id) {
+        return labelMapper.getLabelName(id);
     }
 
 

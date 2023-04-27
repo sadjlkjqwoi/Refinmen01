@@ -1,6 +1,7 @@
 package com.mt.reginmen.service;
 
 import com.mt.reginmen.domain.Data;
+import com.mt.reginmen.domain.Label;
 import com.mt.reginmen.domain.Reviews_data;
 
 import java.util.List;
@@ -21,7 +22,7 @@ public interface DataService {
 
     void click(int id);
 
-    Map<Integer,Double> getLabelHot(int min, int max);
+    List<List<Label>> getLabelTop3();
 
     List<Data> findAllData();
 }

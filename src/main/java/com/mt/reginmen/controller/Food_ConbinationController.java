@@ -40,7 +40,6 @@ public class Food_ConbinationController {
         return food_conbinationService.RecommendedFood_Conbination(id);
     }
 
-
     //获得食谱的详细信息
     @GetMapping("/getInformation")
     public String[] getInformation(int id){

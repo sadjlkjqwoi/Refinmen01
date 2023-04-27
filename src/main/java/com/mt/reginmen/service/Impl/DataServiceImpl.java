@@ -1,7 +1,9 @@
 package com.mt.reginmen.service.Impl;
 
 import com.mt.reginmen.dao.DataMapper;
+import com.mt.reginmen.dao.LabelMapper;
 import com.mt.reginmen.domain.Data;
+import com.mt.reginmen.domain.Label;
 import com.mt.reginmen.domain.Reviews_data;
 import com.mt.reginmen.service.DataService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,9 @@ import java.util.*;
 public class DataServiceImpl implements DataService {
     @Autowired
     private DataMapper dataMapper;
+
+    @Autowired
+    LabelMapper labelMapper;
 
     @Override
     public String getUserLabel(String id) {
@@ -49,39 +54,79 @@ public class DataServiceImpl implements DataService {
     }
 
     @Override
-    public Map<Integer,Double> getLabelHot(int min,int max) {
-        List<String> labels = dataMapper.getLabelHot(min, max);
-        ArrayList<String> label = new ArrayList<>();
-        Map<String, Integer> map = new HashMap<>();
-        for (String l:labels){
-            String[] a = l.split(",");
-            label.addAll(Arrays.asList(a));
+    public List<List<Label>> getLabelTop3() {
+        List<String> labels1 = dataMapper.getLabelTop3(16,44);
+        List<String> labels2 = dataMapper.getLabelTop3(45,60);
+        List<String> labels3 = dataMapper.getLabelTop3(61,999);
+        ArrayList<String> label1 = new ArrayList<>();
+        ArrayList<String> label2 = new ArrayList<>();
+        ArrayList<String> label3 = new ArrayList<>();
+        Map<String, Integer> map1 = new HashMap<>();
+        Map<String, Integer> map2 = new HashMap<>();
+        Map<String, Integer> map3 = new HashMap<>();
+        for (String l1 : labels1){
+            String[] a = l1.split(",");
+            label1.addAll(Arrays.asList(a));
         }
-        System.out.println(label.size());
-        int count = 0;
-        for (String obj : label){
-            if (map.containsKey(obj)){
-                count++;
-                map.put(obj,map.get(obj)+1);
-            }else {
-                map.put(obj,1);
-            }
+        for (String l1 : labels2){
+            String[] a = l1.split(",");
+            label2.addAll(Arrays.asList(a));
         }
-        List<Integer> hotLabels = new ArrayList<>();
-        List<Map.Entry<String,Integer>> list = new ArrayList<>(map.entrySet());
-        Collections.sort(list,(o1, o2) -> (o2.getValue() - o1.getValue()));
-        for (int i=0;i<5;i++){
-            hotLabels.add(Integer.valueOf(list.get(i).getKey()));
-            System.out.println((double)Integer.valueOf(list.get(i).getValue())/ label.size());
+        for (String l1 : labels3){
+            String[] a = l1.split(",");
+            label3.addAll(Arrays.asList(a));
+        }
+        for (String obj : label1){
+            if (map1.containsKey(obj)){
+                map1.put(obj,map1.get(obj)+1);
+            }else map1.put(obj,1);
+        }
+        for (String obj : label2){
+            if (map2.containsKey(obj)){
+                map2.put(obj,map2.get(obj)+1);
+            }else map2.put(obj,1);
+        }
+        for (String obj : label3){
+            if (map3.containsKey(obj)){
+                map3.put(obj,map3.get(obj)+1);
+            }else map3.put(obj,1);
+        }
+        List<Integer> hotLabels1 = new ArrayList<>();
+        List<Integer> hotLabels2 = new ArrayList<>();
+        List<Integer> hotLabels3 = new ArrayList<>();
+        List<Map.Entry<String,Integer>> list1 = new ArrayList<>(map1.entrySet());
+        List<Map.Entry<String,Integer>> list2 = new ArrayList<>(map2.entrySet());
+        List<Map.Entry<String,Integer>> list3 = new ArrayList<>(map3.entrySet());
+        list1.sort((o1, o2) -> (o2.getValue() - o1.getValue()));
+        list2.sort((o1, o2) -> (o2.getValue() - o1.getValue()));
+        list3.sort((o1, o2) -> (o2.getValue() - o1.getValue()));
+
+        for (int i=0;i<3;i++){
+            hotLabels1.add(Integer.valueOf(list1.get(i).getKey()));
+            hotLabels2.add(Integer.valueOf(list2.get(i).getKey()));
+            hotLabels3.add(Integer.valueOf(list3.get(i).getKey()));
         }
 
-        Map<Integer,Double> map1 = new HashMap<>();
+        List<Label> n1 = new ArrayList<>();
+        List<Label> n2 = new ArrayList<>();
+        List<Label> n3 = new ArrayList<>();
 
-        for (int i=0;i< hotLabels.size();i++){
-            map1.put(Integer.valueOf(list.get(i).getKey()),(double)Integer.valueOf(list.get(i).getValue())/ label.size());
+        for (Integer i : hotLabels1){
+            n1.add(labelMapper.getLabelById(i));
+        }
+        for (Integer i : hotLabels2){
+            n2.add(labelMapper.getLabelById(i));
+        }
+        for (Integer i : hotLabels3){
+            n3.add(labelMapper.getLabelById(i));
         }
 
-        return map1;
+        List<List<Label>> list = new ArrayList<>();
+        list.add(n1);
+        list.add(n2);
+        list.add(n3);
+
+        return list;
     }
 
     @Override
