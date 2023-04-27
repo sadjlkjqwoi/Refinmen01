@@ -30,7 +30,7 @@ public class Reviews_topicsServiceImpl implements Reviews_topicsService {
     }
 
     @Override
-    public List<Reviews_topics> AllReviews_topics() {
-        return reviews_topicsMapper.AllReviews_topics();
+    public List<Reviews_topics> AllReviews_topics(int id) {
+        return reviews_topicsMapper.AllReviews_topics(id);
     }
 }

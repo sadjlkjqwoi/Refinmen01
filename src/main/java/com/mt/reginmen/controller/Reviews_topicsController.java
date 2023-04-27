@@ -28,8 +28,8 @@ public class Reviews_topicsController {
 
     //获得所有人发表的评论
     @GetMapping("/AllReviews_topics")
-    public List<Reviews_topics> AllReviews_topics(){
-        return reviews_topicsService.AllReviews_topics();
+    public List<Reviews_topics> AllReviews_topics(int id){
+        return reviews_topicsService.AllReviews_topics(id);
     }
 
 }
