@@ -22,7 +22,9 @@
     <select id="AgeCount" resultType="java.lang.Integer">
         SELECT COUNT(age) FROM user WHERE age BETWEEN #{min} AND #{max};
     </select>
-
+    <select id="findUserLabels" resultType="java.lang.String">
+        select labels_ids from user where id=#{user_id}
+    </select>
 
 
 </mapper>

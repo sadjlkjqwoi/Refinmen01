@@ -4,10 +4,12 @@ import com.mt.reginmen.domain.Data;
 import com.mt.reginmen.domain.Label;
 import com.mt.reginmen.domain.Reviews_data;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public interface DataService {
+
     String getUserLabel(String id);
 
 
@@ -25,4 +27,8 @@ public interface DataService {
     List<List<Label>> getLabelTop3();
 
     List<Data> findAllData();
+
+
+    List<Integer> getLabelByAge(int min,int max);
+
 }

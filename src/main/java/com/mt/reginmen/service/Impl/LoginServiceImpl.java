@@ -12,6 +12,12 @@ public class LoginServiceImpl implements LoginService {
     @Autowired
     private LoginMapper loginMapper;
 
+    /**
+     * 登录
+     * @param id
+     * @param password
+     * @return
+     */
     @Override
     public String login(String id, String password) {
 
@@ -25,7 +31,18 @@ public class LoginServiceImpl implements LoginService {
         } else {
             return "登录失败，该用户不存在";
         }
-
-
     }
+
+    @Override
+    public int findUserAge(String id) {
+        User user = loginMapper.findById(id);
+        int age=user.getAge();
+        if (age>=16&&age<=44)
+            return 1;
+        else if(age>=45&&age<=60)
+            return 2;
+        else
+            return 3;
+    }
+
 }

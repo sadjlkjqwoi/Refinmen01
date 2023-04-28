@@ -8,7 +8,7 @@ import java.util.List;
 @Mapper
 public interface LabelMapper {
 
-    int addLabel(Label label);
+    int addLabel(String id,String labels_ids);
 
     int deleteLabel(int id);
 

@@ -5,6 +5,7 @@ import com.mt.reginmen.domain.Label;
 import com.mt.reginmen.domain.Reviews_data;
 import com.mt.reginmen.service.DataService;
 import com.mt.reginmen.service.RegisterService;
+import jdk.jfr.Frequency;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -67,24 +68,9 @@ public class DataController {
                 }
             }
         }
-
-
         return datas;
     }
 
-    /**
-     * 上传该条数据的所有的评论
-     */
-    @GetMapping("/findAllReviews")
-    List<Reviews_data> findAllReviews(String ids) {
-        List<Reviews_data> reviews_data = new ArrayList<>();
-        String[] id = ids.split(",");
-        for (int i = 0; i < id.length; i++) {
-            Reviews_data reviews_data1 = dataService.findReviewsById(Integer.parseInt(id[i]));
-            reviews_data.add(reviews_data1);
-        }
-        return reviews_data;
-    }
 
     /**
      * 根据日期（季节和节气）推荐
@@ -142,17 +128,106 @@ public class DataController {
     }
 
     /**
-     * 根据热度推荐所有数据
+     * 根据年轻人热度标签推荐所有数据
      *
      * @return
      */
-    @GetMapping("/findDataByCount")
-    List<Data> findDataByCount() {
-        List<Data> datas = dataService.findDataByCount();
+    @GetMapping("/findYoung")
+    List<Data> findYoung() {
+        //年轻人喜欢的label
+        List<Integer> young=dataService.getLabelByAge(16,44);
+        System.out.println("年轻人的标签："+young);
+        List<Data> youngAllDatas=new ArrayList<>();
+        List<Data> datas = dataService.findAllData();
+        Boolean[] results = new Boolean[datas.size()];
+        for (int i = 0; i < datas.size(); i++) {
+            results[i] = false;
+        }
+        for (int i = 0; i <datas.size() ; i++) {
+            String dataLabels_ids=datas.get(i).getLabels_ids();
+            String []ids=dataLabels_ids.split(",");
+                for (int m = 0; m < ids.length; m++) {
+                    for (int j = 0; j < young.size(); j++) {
+                        if (Integer.parseInt(ids[m])==young.get(j)) {
+                            youngAllDatas.add(datas.get(i));
+                            results[i]=true;
+                            break;
+                        }
+                    }
+                    if (results[i]==true)
+                        break;
+            }
+        }
 
-        return datas;
+        return youngAllDatas;
     }
 
+    /**
+     * 根据中年人热度标签所有信息
+     * @return
+     */
+    @GetMapping("/findMiddle")
+    public List<Data> findMiddle(){
+        List<Integer> middleLabel=dataService.getLabelByAge(45,60);
+        System.out.println("中年人喜欢的标签："+middleLabel);
+        List<Data> middleAllDatas=new ArrayList<>();
+        List<Data> datas = dataService.findAllData();
+        Boolean[] results = new Boolean[datas.size()];
+        for (int i = 0; i < datas.size(); i++) {
+            results[i] = false;
+        }
+        for (int i = 0; i <datas.size() ; i++) {
+            String dataLabels_ids=datas.get(i).getLabels_ids();
+            String []ids=dataLabels_ids.split(",");
+                for (int m = 0; m < ids.length; m++) {
+                    for (int j = 0; j < middleLabel.size(); j++) {
+                        if (Integer.parseInt(ids[m])==middleLabel.get(j)) {
+                            middleAllDatas.add(datas.get(i));
+                            results[i]=true;
+                            break;
+                        }
+                    }
+                    if (results[i]==true)
+                        break;
+            }
+        }
+
+        return middleAllDatas;
+    }
+
+    /**
+     * 根据老年人喜欢的标签推荐数据
+     * @return
+     */
+    @GetMapping("/findOld")
+    public List<Data> findOld(){
+        List<Integer> oldLabel=dataService.getLabelByAge(61,999);
+        System.out.println("老年人喜欢的标签："+oldLabel);
+        List<Data>  oldAllDatas=new ArrayList<>();
+        List<Data> datas = dataService.findAllData();
+        Boolean[] results = new Boolean[datas.size()];
+        for (int i = 0; i < datas.size(); i++) {
+            results[i] = false;
+        }
+        for (int i = 0; i <datas.size() ; i++) {
+            String dataLabels_ids=datas.get(i).getLabels_ids();
+            String []ids=dataLabels_ids.split(",");
+                for (int m = 0; m < ids.length; m++) {
+                    for (int j = 0; j < oldLabel.size(); j++) {
+                        if (Integer.parseInt(ids[m])==oldLabel.get(j)) {
+                            oldAllDatas.add(datas.get(i));
+                            results[i]=true;
+                            break;
+                        }
+                    }
+                    if(results[i]==true)
+                        break;
+            }
+        }
+
+        return oldAllDatas;
+
+    }
     /**
      * 点击量添加
      */
@@ -165,13 +240,5 @@ public class DataController {
     public List<List<Label>> getLabelHot(){
         return dataService.getLabelTop3();
     }
-
-
-    @GetMapping("/getLabelTop3")
-    public List<List<Label>> getLabelTop3(){
-        return dataService.getLabelTop3();
-    }
-
-
 
 }

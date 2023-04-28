@@ -14,7 +14,6 @@ public class Reviews_dataServiceImpl implements Reviews_dataService {
     @Override
     public void addReviews(Reviews_data reviews_data) {
         reviews_dataMapper.addReviews(reviews_data);
-        reviews_dataMapper.addReview_idToData(reviews_data.getData_id(),String.valueOf(reviews_data.getId()));
     }
 
     @Override

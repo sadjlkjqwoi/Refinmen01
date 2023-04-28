@@ -13,11 +13,14 @@ import java.util.*;
 
 @Service
 public class DataServiceImpl implements DataService {
+
+
     @Autowired
     private DataMapper dataMapper;
 
     @Autowired
     LabelMapper labelMapper;
+
 
     @Override
     public String getUserLabel(String id) {
@@ -133,4 +136,29 @@ public class DataServiceImpl implements DataService {
     public List<Data> findAllData() {
         return dataMapper.findAllDatas();
     }
+
+    @Override
+    public List<Integer> getLabelByAge(int min,int max) {
+        List<String> labels1 = dataMapper.getLabelTop3(min,max);
+        ArrayList<String> label1 = new ArrayList<>();
+        Map<String, Integer> map1 = new HashMap<>();
+        for (String l1 : labels1){
+            String[] a = l1.split(",");
+            label1.addAll(Arrays.asList(a));
+        }
+        for (String obj : label1){
+            if (map1.containsKey(obj)){
+                map1.put(obj,map1.get(obj)+1);
+            }else map1.put(obj,1);
+        }
+        List<Integer> hotLabels1 = new ArrayList<>();
+        List<Map.Entry<String,Integer>> list1 = new ArrayList<>(map1.entrySet());
+        list1.sort((o1, o2) -> (o2.getValue() - o1.getValue()));
+        List<Integer> labels=new ArrayList<>();
+        for (int i = 0; i <8 ; i++) {
+            labels.add(Integer.parseInt(list1.get(i).getKey()));
+        }
+        return labels;
+    }
+
 }

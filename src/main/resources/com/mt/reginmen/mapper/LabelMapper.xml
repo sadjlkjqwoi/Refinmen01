@@ -8,20 +8,10 @@
       mybatis会依据这个接口动态创建一个实现类去实现这个接口，而这个实现类是一个Mapper对象
    -->
 <mapper namespace="com.mt.reginmen.dao.LabelMapper">
-    <!--
-          id = "接口中的方法名"
-          parameterType = "接口中传入方法的参数类型"
-          resultType = "返回实体类对象：包.类名"  处理结果集 自动封装
-          注意:sql语句后不要出现";"号
-              查询：select标签
-              增加：insert标签
-              修改：update标签
-              删除：delete标签
-      -->
-    <insert id="addLabel">
-        insert into label(name)
-        values (#{name})
-    </insert>
+
+    <update id="addLabel">
+        update user set labels_ids=if(labels_ids-=null,#{labels_id},CONCAT(labels_ids,",",#{labels_ids}))  where id=#{id}
+    </update>
     <delete id="deleteLabel">
         delete
         from label

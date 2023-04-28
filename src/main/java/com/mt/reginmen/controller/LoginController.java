@@ -20,4 +20,15 @@ public class LoginController {
         return loginService.login(id, password);
     }
 
+    /**
+     * 返回用户是哪个年龄阶层
+     * @param id
+     * @return
+     */
+    @GetMapping("/findUserAge")
+    public int findUserAge(String id){
+       return loginService.findUserAge(id);
+    }
+
+
 }

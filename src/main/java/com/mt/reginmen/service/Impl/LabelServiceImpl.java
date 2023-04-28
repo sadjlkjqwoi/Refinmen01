@@ -1,6 +1,7 @@
 package com.mt.reginmen.service.Impl;
 
 import com.mt.reginmen.dao.LabelMapper;
+import com.mt.reginmen.dao.RegisterMapper;
 import com.mt.reginmen.domain.Label;
 import com.mt.reginmen.service.LabelService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,13 +19,25 @@ public class LabelServiceImpl implements LabelService {
 
     @Autowired
     DataServiceImpl dataService;
+    @Autowired
+    RegisterMapper registerMapper;
 
-
+    /**
+     * 个人页面添加个性化标签
+     * @param id
+     * @param labels_ids
+     * @return
+     */
     @Override
-    public int addLabel(Label label) {
-        return labelMapper.addLabel(label);
+    public int addLabel(String id,String labels_ids) {
+        return labelMapper.addLabel(id,labels_ids);
     }
 
+    /**
+     * 个人页面个性化标签的删除    ！！！暂未实现
+     * @param id
+     * @return
+     */
     @Override
     public int deleteLabel(int id) {
         return labelMapper.deleteLabel(id);
@@ -63,5 +76,20 @@ public class LabelServiceImpl implements LabelService {
         return labelMapper.getLabelName(id);
     }
 
+    /**
+     * 查询用户已有的标签
+     * @param user_id
+     * @return
+     */
+    public List<Label> findUser_label(String user_id){
+        String label=registerMapper.findUserLabels(user_id);
+        String []labels=label.split(",");
+        List<Label> labelList=new ArrayList<>();
+        for (int i = 0; i <labels.length ; i++) {
+            Label label1=labelMapper.getLabelById(Integer.parseInt(labels[i]));
+            labelList.add(label1);
+        }
+        return labelList;
+    }
 
 }

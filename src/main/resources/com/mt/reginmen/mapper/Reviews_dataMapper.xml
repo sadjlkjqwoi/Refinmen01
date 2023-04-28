@@ -8,10 +8,10 @@
     <insert id="addReviews">
         insert into reviews_data values (null,#{user_id},#{data_id},#{content})
     </insert>
-    <update id="addReview_idToData">
-        update data set reviews_ids=if(reviews_ids=null,#{id},CONCAT(reviews_ids,",",#{id})) where id=#{data_id}
-    </update>
     <delete id="deleteReviews">
         delete from reviews_data where id=#{id}
     </delete>
+    <select id="findAllReviews" resultType="com.mt.reginmen.domain.Reviews_data">
+        select * from reviews_data where data_id=#{data_id}
+    </select>
 </mapper>

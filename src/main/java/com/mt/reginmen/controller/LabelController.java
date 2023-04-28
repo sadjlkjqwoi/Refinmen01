@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin(origins = "http://localhost:8080")
 @RestController
@@ -17,15 +18,36 @@ public class LabelController {
 
     @Autowired
     LabelServiceImpl labelService;
-
+    /**
+     * 个人页面用户标签的添加
+     * @param label
+     */
     @GetMapping("/addLabel")
-    public int addLabel(@RequestBody Label label) {
-        return labelService.addLabel(label);
+    public void addLabel(@RequestBody Map<String, String> label) {
+        String id = label.get("id");
+        String labelsIds = label.get("labels_ids");
+        labelService.addLabel(id,labelsIds);
     }
 
-    @GetMapping("/deleteLabel")
-    public int deleteLabel(int id) {
-        return labelService.deleteLabel(id);
+    /**
+     * 个人页面用户标签的删除
+     * @param user_id
+     * @param label_id
+     * @return
+     */
+//    @GetMapping("/deleteLabel")
+//    public int deleteLabel(String user_id,int label_id) {
+//        return labelService.deleteLabel(user_id,label_id);
+//    }
+
+    /**
+     * 查找用户已有的标签
+     * @param id
+     * @return
+     */
+    @GetMapping("/findUser_label")
+    public List<Label> findUser_label(String id){
+        return labelService.findUser_label(id);
     }
 
     @GetMapping("/selectLabel")

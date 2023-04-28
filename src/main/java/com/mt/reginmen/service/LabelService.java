@@ -7,7 +7,7 @@ import java.util.Map;
 
 public interface LabelService {
 
-    int addLabel(Label label);
+    int addLabel(String id,String labels_ids);
 
     int deleteLabel(int id);
 
@@ -28,5 +28,6 @@ public interface LabelService {
     double Sum();
 
     String getLabelName(int id);
+    public List<Label> findUser_label(String user_id);
 
 }
