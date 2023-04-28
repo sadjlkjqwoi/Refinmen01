@@ -167,6 +167,11 @@ public class DataController {
     }
 
 
+    @GetMapping("/getLabelTop3")
+    public List<List<Label>> getLabelTop3(){
+        return dataService.getLabelTop3();
+    }
+
 
 
 }
