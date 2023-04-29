@@ -19,8 +19,9 @@ public class TopicController {
     @Autowired
     TopicServiceImpl topicService;
 
-    @GetMapping("/addTopic")
+    @PostMapping("/addTopic")
     public int addTopic(@RequestBody Topics topic) {
+        System.out.println(topic);
         return topicService.addTopic(topic);
     }
 

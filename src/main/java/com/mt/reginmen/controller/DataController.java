@@ -233,6 +233,7 @@ public class DataController {
      */
     @PutMapping("/click")
     public void click(int id) {
+        System.out.println(id);
         dataService.click(id);
     }
 

@@ -10,8 +10,8 @@
 <mapper namespace="com.mt.reginmen.dao.TopicsMapper">
 
     <insert id="addTopic">
-        insert into topics(id,name, count, user_id, content, reviews_ids)
-        values (#{id},#{name}, 0,#{user_id}, #{content}, #{reviews_ids})
+        insert into topics(name, count, user_id, content, reviews_ids)
+        values (#{name}, 0,#{user_id}, #{content}, #{reviews_ids})
     </insert>
 
     <update id="IncreaseHot">

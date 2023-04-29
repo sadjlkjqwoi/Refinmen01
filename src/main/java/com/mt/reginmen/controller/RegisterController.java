@@ -25,6 +25,7 @@ public class RegisterController {
      */
     @PostMapping("/register")
     public String register(@RequestBody User user) {
+        System.out.println(user);
         return registerService.register(user);
     }
 

@@ -12,4 +12,6 @@ public class Reviews_topics {
     private String user_id;
     private int topics_id;
     private String content;
+
+
 }

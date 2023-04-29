@@ -16,11 +16,14 @@ public class Reviews_topicsController {
     Reviews_topicsServiceImpl reviews_topicsService;
 
 
-    @GetMapping("/addReviews_topics")
+    @PostMapping("/addReviews_topics")
     public int addReviews_topics(@RequestBody Reviews_topics reviews_topics) {
+        System.out.println(reviews_topics);
         return reviews_topicsService.addReviews_topics(reviews_topics);
     }
 
+
+    //先搁置删除自己的评论
     @DeleteMapping("/deleteReviews_topics")
     public int deleteReviews_topics(int id) {
         return reviews_topicsService.deleteReviews_topics(id);
